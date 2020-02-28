@@ -16,5 +16,13 @@ steps:
   - 'managed'
   - '--allow-unauthenticated'
 
+# deploy container image to GKE
+- name: "gcr.io/cloud-builders/gke-deploy"
+  args:
+  - run
+  - --filename=kubeconfig.yaml
+  - --location=asia-southeast1-a
+  - --cluster=midas-test-1-kub
+
 images:
 - 'gcr.io/$PROJECT_ID/quickstart-image'
